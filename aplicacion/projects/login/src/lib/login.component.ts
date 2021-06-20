@@ -6,6 +6,12 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 
 interface User {
   email: string;
@@ -24,7 +30,19 @@ export class LoginComponent implements OnInit {
 
   user: User | undefined;
 
-  constructor() {}
+  hide = true;
+
+  formGroupTS: FormGroup;
+
+  constructor() {
+    this.formGroupTS = new FormGroup({
+      email: new FormControl(null, [Validators.required, Validators.email]),
+      password: new FormControl(null, [
+        Validators.required,
+        Validators.pattern(/^[0-9]{1,3}[a-zA-Z]{4,8}$/g),
+      ]),
+    });
+  }
 
   getInputsFormUser(): User {
     return {
@@ -34,6 +52,9 @@ export class LoginComponent implements OnInit {
   }
 
   handler() {
+    /*     if (this.formGroupTS.invalid) {
+      return;
+    } */
     const user: User = this.getInputsFormUser();
     this.onLogin.emit(user);
   }
