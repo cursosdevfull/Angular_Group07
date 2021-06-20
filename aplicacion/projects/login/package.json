@@ -3,7 +3,11 @@
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/common": "^12.0.4",
-    "@angular/core": "^12.0.4"
+    "@angular/core": "^12.0.4",
+    "@angular/flex-layout": "^12.0.0-beta.34",
+    "@angular/cdk": "^12.0.5",
+    "@angular/animations": "~12.0.1",
+    "@angular/material": "^12.0.5"
   },
   "dependencies": {
     "tslib": "^2.1.0"
