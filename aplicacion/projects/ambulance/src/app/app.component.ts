@@ -7,14 +7,7 @@ import { User } from './users/domain/user.interface';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'ambulance';
-  currentDate = new Date();
-
   login(user: Partial<User>) {
     console.log(user);
-  }
-
-  recoveryPassword(email: string) {
-    console.log(email);
   }
 }
