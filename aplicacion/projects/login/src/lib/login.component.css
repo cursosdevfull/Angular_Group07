@@ -1,5 +1,8 @@
+:host {
+  width: 80%;
+}
+
 form {
-  height: 100vh;
   padding: 8px;
 }
 
