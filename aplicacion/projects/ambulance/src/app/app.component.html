@@ -1,8 +1,12 @@
 <mat-sidenav-container>
-  <mat-sidenav opened="true" mode="side"> Menu </mat-sidenav>
+  <mat-sidenav opened="true" mode="side">
+    <amb-menu></amb-menu>
+  </mat-sidenav>
   <mat-sidenav-content>
     <amb-header></amb-header>
+
     zona de carga de componentes
+    <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
 
