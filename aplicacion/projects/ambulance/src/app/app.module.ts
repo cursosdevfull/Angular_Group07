@@ -10,6 +10,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { AppRoutingModule } from './app-routing.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MenuService } from './shared/services/menu.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,7 +24,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatIconModule,
     FlexLayoutModule,
   ],
-  providers: [],
+  providers: [
+    //MenuService, // {provide: MenuService, useClass: MenuService}
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

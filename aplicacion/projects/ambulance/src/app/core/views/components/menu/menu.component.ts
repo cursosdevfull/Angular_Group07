@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuService } from 'projects/ambulance/src/app/shared/services/menu.service';
 
 @Component({
   selector: 'amb-menu',
@@ -6,15 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./menu.component.css'],
 })
 export class MenuComponent implements OnInit {
-  menu = [
-    { title: 'Resumen', url: '/dashboard', icon: 'face' },
-    { title: 'Historias', url: '/histories', icon: 'face' },
-    { title: 'Médicos', url: '/medics', icon: 'face' },
-    { title: 'Pilotos', url: '/drivers', icon: 'face' },
-    { title: 'Usuarios', url: '/users', icon: 'face' },
-  ];
+  menu: any[] = [];
 
-  constructor() {}
+  constructor(menuService: MenuService) {
+    this.menu = menuService.getMenu();
+  }
 
   ngOnInit(): void {}
 }
