@@ -10,11 +10,13 @@ import { MatListModule } from '@angular/material/list';
 import { HeaderComponent } from './views/components/header/header.component';
 import { MenuComponent } from './views/components/menu/menu.component';
 import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [PageLoginComponent, HeaderComponent, MenuComponent],
   exports: [PageLoginComponent, HeaderComponent, MenuComponent],
   imports: [
+    CommonModule,
     LoginModule,
     FlexLayoutModule,
     MatIconModule,

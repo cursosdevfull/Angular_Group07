@@ -6,8 +6,11 @@ import { OwnComponent } from './own.component';
 
 const routes: Routes = [
   { path: '', component: OwnComponent },
-  { path: 'home', component: HomeComponent },
-  { path: 'home/dashboard', component: DashboardComponent },
+  {
+    path: 'home',
+    component: HomeComponent,
+    children: [{ path: 'dashboard', component: DashboardComponent }],
+  },
 ];
 
 @NgModule({

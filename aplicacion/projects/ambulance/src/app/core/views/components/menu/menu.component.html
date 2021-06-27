@@ -1,11 +1,51 @@
 <mat-nav-list>
-  <mat-list-item>
-    <a routerLink="/">Component Own</a>
+  <mat-list-item
+    *ngFor="let item of menu"
+    class="menu"
+    routerLinkActive="activeLink"
+    [routerLinkActiveOptions]="{ exact: true }"
+  >
+    <a routerLink="{{ item.url }}">
+      <button mat-icon-button>
+        <mat-icon>{{ item.icon }}</mat-icon>
+        <span>{{ item.title }}</span>
+      </button>
+    </a>
   </mat-list-item>
-  <mat-list-item>
-    <a routerLink="/home">Component Home</a>
+  <!--   <mat-list-item
+    class="menu"
+    routerLinkActive="activeLink"
+    [routerLinkActiveOptions]="{ exact: true }"
+  >
+    <a routerLink="/">
+      <button mat-icon-button>
+        <mat-icon>face</mat-icon>
+        <span>Component Own</span>
+      </button>
+    </a>
   </mat-list-item>
-  <mat-list-item>
-    <a routerLink="/home/dashboard">Component Dashboard</a>
+  <mat-list-item
+    class="menu"
+    routerLinkActive="activeLink"
+    [routerLinkActiveOptions]="{ exact: true }"
+  >
+    <a routerLink="/home">
+      <button mat-icon-button>
+        <mat-icon>face</mat-icon>
+        <span>Component Home</span>
+      </button>
+    </a>
   </mat-list-item>
+  <mat-list-item
+    class="menu"
+    routerLinkActive="activeLink"
+    [routerLinkActiveOptions]="{ exact: true }"
+  >
+    <a routerLink="/home/dashboard">
+      <button mat-icon-button>
+        <mat-icon>face</mat-icon>
+        <span>Component Dashboard</span>
+      </button>
+    </a>
+  </mat-list-item> -->
 </mat-nav-list>

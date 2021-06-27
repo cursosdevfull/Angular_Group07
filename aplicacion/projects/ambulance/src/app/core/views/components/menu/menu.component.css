@@ -1,0 +1,35 @@
+mat-nav-list {
+  width: 95%;
+  height: calc(100vh - 74px);
+}
+
+mat-list-item {
+  margin-top: 10px;
+  border-radius: 0 24px 24px 0;
+  transition: 0.2s background-color;
+}
+
+mat-list-item.menu:hover {
+  background-color: #039be5 !important;
+}
+
+.mat-list-base {
+  padding-top: 0;
+}
+
+.activeLink {
+  background-color: #039be5 !important;
+}
+
+a,
+a:link,
+a:visited,
+a:active {
+  color: white !important;
+  font-size: 14px;
+}
+
+a span {
+  display: inline-block;
+  padding-left: 8px;
+}
