@@ -11,6 +11,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { AppRoutingModule } from './app-routing.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MenuService } from './shared/services/menu.service';
+import { IconService } from './shared/services/icon.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,6 +24,7 @@ import { MenuService } from './shared/services/menu.service';
     MatSidenavModule,
     AppRoutingModule,
     MatIconModule,
+    HttpClientModule,
     FlexLayoutModule,
   ],
   providers: [
@@ -29,4 +32,6 @@ import { MenuService } from './shared/services/menu.service';
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+  constructor(private iconService: IconService) {}
+}

@@ -5,7 +5,7 @@ mat-sidenav {
 }
 
 mat-sidenav {
-  width: 280px;
+  max-width: 280px;
   background-color: rgb(45, 50, 62);
 }
 
