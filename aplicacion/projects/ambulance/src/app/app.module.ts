@@ -13,6 +13,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MenuService } from './shared/services/menu.service';
 import { IconService } from './shared/services/icon.service';
 import { HttpClientModule } from '@angular/common/http';
+import { Paginator } from './shared/class/paginator';
+import { MatPaginatorIntl } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,9 +29,7 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     FlexLayoutModule,
   ],
-  providers: [
-    //MenuService, // {provide: MenuService, useClass: MenuService}
-  ],
+  providers: [{ provide: MatPaginatorIntl, useClass: Paginator }],
   bootstrap: [AppComponent],
 })
 export class AppModule {

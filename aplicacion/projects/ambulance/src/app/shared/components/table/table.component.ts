@@ -36,7 +36,9 @@ export class TableComponent implements OnInit {
     if (!this.columnsDef) {
       return;
     }
-    this.columnsDef.forEach((columnDef) => this.table?.addColumnDef(columnDef));
-    this.listFields.push('actions');
+    this.columnsDef.forEach((columnDef) => {
+      this.listFields.push(columnDef.name);
+      this.table?.addColumnDef(columnDef);
+    });
   }
 }
