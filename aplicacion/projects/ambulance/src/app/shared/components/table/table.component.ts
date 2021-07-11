@@ -23,6 +23,10 @@ export class TableComponent implements OnInit {
 
   constructor() {}
 
+  ngOnChanges() {
+    this.loadData();
+  }
+
   ngOnInit(): void {
     this.listFields = this.metaDataColumns.map((el) => el.field);
     this.loadData();

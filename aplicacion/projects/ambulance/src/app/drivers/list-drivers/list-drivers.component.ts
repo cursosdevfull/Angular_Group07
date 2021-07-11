@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from 'projects/ambulance/src/environments/environment';
 import { MetaDataColumn } from '../../shared/interfaces/medatacolum.interface';
 
 @Component({
@@ -7,7 +8,7 @@ import { MetaDataColumn } from '../../shared/interfaces/medatacolum.interface';
   styleUrls: ['./list-drivers.component.css'],
 })
 export class ListDriversComponent implements OnInit {
-  data: any = [
+  dataOriginal: any[] = [
     {
       id: 1,
       nombre: 'Jorge Atala',
@@ -166,11 +167,29 @@ export class ListDriversComponent implements OnInit {
     },
   ];
 
+  data: any;
+  pageCurrent = 0;
+  pageSize = environment.pageSize;
+
   metaDataColumns: MetaDataColumn[] = [
     { field: 'id', title: 'ID' },
     { field: 'nombre', title: 'Nombre Completo' },
   ];
-  constructor() {}
+  constructor() {
+    this.loadDataByPage();
+  }
+
+  loadDataByPage() {
+    this.data = this.dataOriginal.slice(
+      this.pageCurrent * this.pageSize,
+      this.pageCurrent * this.pageSize + this.pageSize
+    );
+  }
+
+  changePage(page: number) {
+    this.pageCurrent = page;
+    this.loadDataByPage();
+  }
 
   ngOnInit(): void {}
 }

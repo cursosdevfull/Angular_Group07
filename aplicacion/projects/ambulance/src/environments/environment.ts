@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   pathAPI: 'https://api-dev.midominio.com',
+  pageSize: 10,
 };
 
 /*

@@ -3,5 +3,9 @@
   <perfect-scrollbar class="heightMaxPerfectScrollbar">
     <amb-table [data]="data" [metaDataColumns]="metaDataColumns"></amb-table>
   </perfect-scrollbar>
-  <amb-paginator></amb-paginator>
+  <amb-paginator
+    [pageSize]="pageSize"
+    [length]="dataOriginal.length"
+    (page)="changePage($event)"
+  ></amb-paginator>
 </amb-container>
