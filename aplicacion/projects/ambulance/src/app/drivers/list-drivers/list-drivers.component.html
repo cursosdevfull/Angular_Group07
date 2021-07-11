@@ -5,10 +5,20 @@
       <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let row" class="align-right">
-          <button mat-icon-button color="primary" matTooltip="EDITAR">
+          <button
+            mat-icon-button
+            color="primary"
+            matTooltip="EDITAR"
+            (click)="edit(row)"
+          >
             <mat-icon>edit</mat-icon>
           </button>
-          <button mat-icon-button color="accent" matTooltip="ELIMINAR">
+          <button
+            mat-icon-button
+            color="accent"
+            matTooltip="ELIMINAR"
+            (click)="delete(row)"
+          >
             <mat-icon>delete</mat-icon>
           </button>
         </td>

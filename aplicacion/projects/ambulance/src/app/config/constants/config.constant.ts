@@ -3,10 +3,10 @@ import { ConfigLayout } from '../interfaces/config.interface';
 export const AMB_Config: ConfigLayout = {
   layout: {
     header: {
-      hidden: true,
+      hidden: false,
     },
     menu: {
-      hidden: true,
+      hidden: false,
     },
   },
 };

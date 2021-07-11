@@ -18,7 +18,10 @@ import { PaginatorComponent } from './components/paginator/paginator.component';
 import { KeypadComponent } from './components/keypad/keypad.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatDialogModule } from '@angular/material/dialog';
 import { LockComponent } from './components/lock/lock.component';
+import { UtilComponent } from './services/util/util.component';
+import { ConfirmComponent } from './components/confirm/confirm.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -31,6 +34,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     PaginatorComponent,
     KeypadComponent,
     LockComponent,
+    UtilComponent,
+    ConfirmComponent,
   ],
   imports: [
     CommonModule,
@@ -42,6 +47,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     MatCardModule,
     MatTableModule,
     MatPaginatorModule,
+    MatDialogModule,
   ],
   exports: [
     TitleComponent,
@@ -51,6 +57,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     PaginatorComponent,
     KeypadComponent,
     LockComponent,
+    MatDialogModule,
+    ConfirmComponent,
   ],
   providers: [
     {

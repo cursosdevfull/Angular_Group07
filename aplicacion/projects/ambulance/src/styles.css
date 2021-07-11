@@ -19,3 +19,8 @@ body {
 .align-right {
   text-align: right;
 }
+
+.mat-form-field.mat-focused .mat-form-field-label {
+  color: red !important;
+  font-style: italic;
+}
