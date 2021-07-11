@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from 'projects/ambulance/src/environments/environment';
+import { KeyPadButton } from '../../shared/interfaces/keybutton.interface';
 import { MetaDataColumn } from '../../shared/interfaces/medatacolum.interface';
 
 @Component({
@@ -175,6 +176,17 @@ export class ListDriversComponent implements OnInit {
     { field: 'id', title: 'ID' },
     { field: 'nombre', title: 'Nombre Completo' },
   ];
+
+  keypadButtons: KeyPadButton[] = [
+    { icon: 'add', tooltip: 'AGREGAR', color: 'primary', action: 'NEW' },
+    {
+      icon: 'cloud_download',
+      tooltip: 'DESCARGAR',
+      color: 'accent',
+      action: 'DOWNLOAD',
+    },
+  ];
+
   constructor() {
     this.loadDataByPage();
   }
@@ -192,4 +204,8 @@ export class ListDriversComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  action(act: string) {
+    console.log(act);
+  }
 }

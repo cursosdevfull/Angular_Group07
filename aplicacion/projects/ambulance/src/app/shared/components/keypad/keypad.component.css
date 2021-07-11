@@ -1,0 +1,6 @@
+div {
+  position: fixed;
+  bottom: 50px;
+  right: 10px;
+  z-index: 1000000;
+}
