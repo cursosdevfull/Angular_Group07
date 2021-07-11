@@ -12,7 +12,7 @@ import { MetaDataColumn } from '../../interfaces/medatacolum.interface';
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.css'],
 })
-export class TableComponent implements OnInit {
+export class TableComponent {
   @Input() data: any;
   @Input() metaDataColumns: MetaDataColumn[] = [];
   @ViewChild(MatTable, { static: true }) table!: MatTable<any>;

@@ -15,6 +15,9 @@ import { IconService } from './shared/services/icon.service';
 import { HttpClientModule } from '@angular/common/http';
 import { Paginator } from './shared/class/paginator';
 import { MatPaginatorIntl } from '@angular/material/paginator';
+import { ConfigModule } from './config/modules/config.module';
+import { AMB_Config } from './config/constants/config.constant';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -28,6 +31,8 @@ import { MatPaginatorIntl } from '@angular/material/paginator';
     MatIconModule,
     HttpClientModule,
     FlexLayoutModule,
+    ConfigModule.forRoot(AMB_Config),
+    SharedModule,
   ],
   providers: [{ provide: MatPaginatorIntl, useClass: Paginator }],
   bootstrap: [AppComponent],

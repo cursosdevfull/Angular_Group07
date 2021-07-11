@@ -37,10 +37,7 @@ export class LoginComponent implements OnInit {
   constructor() {
     this.formGroupTS = new FormGroup({
       email: new FormControl(null, [Validators.required, Validators.email]),
-      password: new FormControl(null, [
-        Validators.required,
-        Validators.pattern(/^[0-9]{1,3}[a-zA-Z]{4,8}$/g),
-      ]),
+      password: new FormControl(null, Validators.required),
     });
   }
 
@@ -52,9 +49,6 @@ export class LoginComponent implements OnInit {
   }
 
   handler() {
-    /*     if (this.formGroupTS.invalid) {
-      return;
-    } */
     const user: User = this.getInputsFormUser();
     this.onLogin.emit(user);
   }

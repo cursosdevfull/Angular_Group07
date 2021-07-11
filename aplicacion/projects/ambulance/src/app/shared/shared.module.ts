@@ -15,6 +15,10 @@ import {
   PERFECT_SCROLLBAR_CONFIG,
 } from 'ngx-perfect-scrollbar';
 import { PaginatorComponent } from './components/paginator/paginator.component';
+import { KeypadComponent } from './components/keypad/keypad.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { LockComponent } from './components/lock/lock.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -25,12 +29,16 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     ContainerComponent,
     TableComponent,
     PaginatorComponent,
+    KeypadComponent,
+    LockComponent,
   ],
   imports: [
     CommonModule,
     MatToolbarModule,
     MatIconModule,
     FlexLayoutModule,
+    MatButtonModule,
+    MatTooltipModule,
     MatCardModule,
     MatTableModule,
     MatPaginatorModule,
@@ -41,6 +49,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     TableComponent,
     PerfectScrollbarModule,
     PaginatorComponent,
+    KeypadComponent,
+    LockComponent,
   ],
   providers: [
     {

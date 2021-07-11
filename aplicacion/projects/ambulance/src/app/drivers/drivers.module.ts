@@ -4,9 +4,21 @@ import { CommonModule } from '@angular/common';
 import { DriversRoutingModule } from './drivers-routing.module';
 import { ListDriversComponent } from './list-drivers/list-drivers.component';
 import { SharedModule } from '../shared/shared.module';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatTableModule } from '@angular/material/table';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [ListDriversComponent],
-  imports: [CommonModule, DriversRoutingModule, SharedModule],
+  imports: [
+    CommonModule,
+    DriversRoutingModule,
+    SharedModule,
+    MatTableModule,
+    MatButtonModule,
+    MatTooltipModule,
+    MatIconModule,
+  ],
 })
 export class DriversModule {}
