@@ -13,8 +13,8 @@ import {
   Validators,
 } from '@angular/forms';
 
-interface User {
-  email: string;
+interface Auth {
+  correo: string;
   password: string;
 }
 
@@ -26,9 +26,9 @@ interface User {
 export class LoginComponent implements OnInit {
   @ViewChild('fieldEmail') fieldEmail: ElementRef | undefined;
   @ViewChild('fieldPassword') fieldPassword: ElementRef | undefined;
-  @Output() onLogin: EventEmitter<User> = new EventEmitter<User>();
+  @Output() onLogin: EventEmitter<Auth> = new EventEmitter<Auth>();
 
-  user: User | undefined;
+  auth!: Auth;
 
   hide = true;
 
@@ -41,16 +41,16 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  getInputsFormUser(): User {
+  getInputsFormUser(): Auth {
     return {
-      email: this.fieldEmail?.nativeElement.value,
+      correo: this.fieldEmail?.nativeElement.value,
       password: this.fieldPassword?.nativeElement.value,
     };
   }
 
   handler() {
-    const user: User = this.getInputsFormUser();
-    this.onLogin.emit(user);
+    const auth: Auth = this.getInputsFormUser();
+    this.onLogin.emit(auth);
   }
 
   ngOnInit(): void {}

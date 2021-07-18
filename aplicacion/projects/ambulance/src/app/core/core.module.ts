@@ -11,6 +11,8 @@ import { HeaderComponent } from './views/components/header/header.component';
 import { MenuComponent } from './views/components/menu/menu.component';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { AuthOperation } from './infraestructure/auth.operation';
+import { StorageOperation } from './infraestructure/storage.operation';
 
 @NgModule({
   declarations: [PageLoginComponent, HeaderComponent, MenuComponent],
@@ -25,6 +27,11 @@ import { CommonModule } from '@angular/common';
     MatMenuModule,
     MatListModule,
     RouterModule,
+  ],
+  providers: [
+    // {provide: AuthOperation, useClass: AuthOperation}
+    AuthOperation,
+    StorageOperation,
   ],
 })
 export class CoreModule {}
