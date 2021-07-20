@@ -5,10 +5,13 @@ import { environment } from '../../../environments/environment';
 import { Token } from '../domain/token.interface';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { AuthRepository } from '../application/auth.repository';
 
 @Injectable()
-export class AuthOperation {
-  constructor(private readonly http: HttpClient, private router: Router) {}
+export class AuthOperation extends AuthRepository {
+  constructor(private readonly http: HttpClient, private router: Router) {
+    super();
+  }
 
   login(auth: Auth): Observable<Token> {
     /*     const data = (response: Token) => {

@@ -13,6 +13,8 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AuthOperation } from './infraestructure/auth.operation';
 import { StorageOperation } from './infraestructure/storage.operation';
+import { AuthRepository } from './application/auth.repository';
+import { StorageRepository } from './application/storage.repository';
 
 @NgModule({
   declarations: [PageLoginComponent, HeaderComponent, MenuComponent],
@@ -29,9 +31,11 @@ import { StorageOperation } from './infraestructure/storage.operation';
     RouterModule,
   ],
   providers: [
+    { provide: AuthRepository, useClass: AuthOperation },
+    { provide: StorageRepository, useClass: StorageOperation },
     // {provide: AuthOperation, useClass: AuthOperation}
-    AuthOperation,
-    StorageOperation,
+    /*     AuthOperation,
+    StorageOperation, */
   ],
 })
 export class CoreModule {}

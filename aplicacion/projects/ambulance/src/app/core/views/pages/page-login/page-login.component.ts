@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 import { ConfigService } from 'projects/ambulance/src/app/config/services/config.service';
 import { User } from 'projects/ambulance/src/app/users/domain/user.interface';
 import { Subscription } from 'rxjs';
+import { AuthRepository } from '../../../application/auth.repository';
+import { AuthUseCase } from '../../../application/auth.usecase';
 import { Auth } from '../../../domain/auth.interface';
 import { Token } from '../../../domain/token.interface';
 import { AuthOperation } from '../../../infraestructure/auth.operation';
@@ -30,8 +32,7 @@ export class PageLoginComponent implements OnInit {
   constructor(
     private readonly configService: ConfigService,
     private readonly router: Router,
-    private readonly authOperation: AuthOperation,
-    private readonly storageOperation: StorageOperation
+    private readonly authUseCase: AuthUseCase
   ) {
     this.configService.configuration = {
       layout: {
@@ -44,11 +45,11 @@ export class PageLoginComponent implements OnInit {
   ngOnInit(): void {}
 
   login(auth: Auth) {
-    this.subscription = this.authOperation
+    this.subscription = this.authUseCase
       .login(auth)
       .subscribe((response: Token) => {
-        this.storageOperation.setStorage('accessToken', response.accessToken);
-        this.storageOperation.setStorage('refreshToken', response.refreshToken);
+        this.authUseCase.setStorage('accessToken', response.accessToken);
+        this.authUseCase.setStorage('refreshToken', response.refreshToken);
 
         this.router.navigate(['/dashboard']);
       });

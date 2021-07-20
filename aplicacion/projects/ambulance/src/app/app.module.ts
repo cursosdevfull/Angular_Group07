@@ -18,6 +18,7 @@ import { MatPaginatorIntl } from '@angular/material/paginator';
 import { ConfigModule } from './config/modules/config.module';
 import { AMB_Config } from './config/constants/config.constant';
 import { SharedModule } from './shared/shared.module';
+import { AuthenticationGuard } from './shared/guards/authentication.guard';
 
 @NgModule({
   declarations: [AppComponent],
@@ -34,7 +35,10 @@ import { SharedModule } from './shared/shared.module';
     ConfigModule.forRoot(AMB_Config),
     SharedModule,
   ],
-  providers: [{ provide: MatPaginatorIntl, useClass: Paginator }],
+  providers: [
+    { provide: MatPaginatorIntl, useClass: Paginator },
+    AuthenticationGuard,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {
