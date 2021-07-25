@@ -5,7 +5,9 @@ import { environment } from '../../../environments/environment';
 import { Token } from '../domain/token.interface';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { AuthRepository } from '../application/auth.repository';
+import { mappingLogin } from '../application/auth-login.dto';
 
 @Injectable()
 export class AuthOperation extends AuthRepository {
@@ -14,13 +16,12 @@ export class AuthOperation extends AuthRepository {
   }
 
   login(auth: Auth): Observable<Token> {
-    /*     const data = (response: Token) => {
-     
-    };
-    const error = (error: any) => console.log(error); */
-    //const complete = () => console.log("Se completó")
-
-    return this.http.post<Token>(`${environment.pathAPI}/users/login`, auth);
-    //.subscribe(data, error);
+    return this.http
+      .post<Token>(`${environment.pathAPI}/users/login`, auth)
+      .pipe(
+        map((el: any) => {
+          return mappingLogin(el);
+        })
+      );
   }
 }

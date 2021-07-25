@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Auth } from '../domain/auth.interface';
 import { Token } from '../domain/token.interface';
@@ -9,11 +10,17 @@ import { StorageRepository } from './storage.repository';
 export class AuthUseCase {
   constructor(
     private authRepository: AuthRepository,
-    private storageRepository: StorageRepository
+    private storageRepository: StorageRepository,
+    private router: Router
   ) {}
 
   login(auth: Auth): Observable<Token> {
     return this.authRepository.login(auth);
+  }
+
+  logout() {
+    this.storageRepository.clear();
+    this.router.navigate(['/']); // http://localhost:4200
   }
 
   setStorage(nameProperty: string, value: string) {
@@ -30,5 +37,9 @@ export class AuthUseCase {
 
   getStatusUser(): boolean {
     return !!this.storageRepository.getStorage('accessToken');
+  }
+
+  getFieldInToken(fieldName: string): string | null {
+    return this.storageRepository.getFieldInToken(fieldName);
   }
 }

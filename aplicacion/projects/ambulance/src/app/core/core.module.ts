@@ -15,9 +15,10 @@ import { AuthOperation } from './infraestructure/auth.operation';
 import { StorageOperation } from './infraestructure/storage.operation';
 import { AuthRepository } from './application/auth.repository';
 import { StorageRepository } from './application/storage.repository';
+import { UpperPipe } from './pipes/upper.pipe';
 
 @NgModule({
-  declarations: [PageLoginComponent, HeaderComponent, MenuComponent],
+  declarations: [PageLoginComponent, HeaderComponent, MenuComponent, UpperPipe],
   exports: [PageLoginComponent, HeaderComponent, MenuComponent],
   imports: [
     CommonModule,

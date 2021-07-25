@@ -1,11 +1,11 @@
 <mat-toolbar fxLayout fxLayoutAlign="end center">
   <button mat-button class="profile" [matMenuTriggerFor]="menuVertical">
     <img src="/assets/img/avatar.jpg" alt="" />
-    <span>Username</span>
+    <span>{{ nameUser | uppercase }}</span>
     <mat-icon>keyboard_arrow_down</mat-icon>
   </button>
   <mat-menu #menuVertical="matMenu">
-    <button mat-menu-item>
+    <button mat-menu-item (click)="logout()">
       <mat-icon>logout</mat-icon>
       <span>Cerrar sesión</span>
     </button>

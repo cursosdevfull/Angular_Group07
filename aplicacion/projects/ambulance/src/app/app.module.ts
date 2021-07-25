@@ -12,13 +12,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MenuService } from './shared/services/menu.service';
 import { IconService } from './shared/services/icon.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Paginator } from './shared/class/paginator';
 import { MatPaginatorIntl } from '@angular/material/paginator';
 import { ConfigModule } from './config/modules/config.module';
 import { AMB_Config } from './config/constants/config.constant';
 import { SharedModule } from './shared/shared.module';
 import { AuthenticationGuard } from './shared/guards/authentication.guard';
+import { TokenInterceptor } from './shared/interceptors/token.interceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -37,6 +38,7 @@ import { AuthenticationGuard } from './shared/guards/authentication.guard';
   ],
   providers: [
     { provide: MatPaginatorIntl, useClass: Paginator },
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
     AuthenticationGuard,
   ],
   bootstrap: [AppComponent],

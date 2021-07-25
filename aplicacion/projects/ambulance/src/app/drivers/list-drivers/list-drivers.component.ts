@@ -5,6 +5,7 @@ import { ConfirmComponent } from '../../shared/components/confirm/confirm.compon
 import { KeyPadButton } from '../../shared/interfaces/keybutton.interface';
 import { MetaDataColumn } from '../../shared/interfaces/medatacolum.interface';
 import { FormDriverComponent } from '../form-driver/form-driver.component';
+import { DriversService } from '../infraestructure/drivers.service';
 
 @Component({
   selector: 'amb-list-drivers',
@@ -190,8 +191,12 @@ export class ListDriversComponent implements OnInit {
     { icon: 'add', tooltip: 'AGREGAR', color: 'primary', action: 'NEW' },
   ];
 
-  constructor(private readonly dialog: MatDialog) {
+  constructor(
+    private readonly dialog: MatDialog,
+    private readonly driversService: DriversService
+  ) {
     this.loadDataByPage();
+    // this.driversService.list();
   }
 
   loadDataByPage() {

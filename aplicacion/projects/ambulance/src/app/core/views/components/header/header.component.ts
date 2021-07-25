@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthUseCase } from '../../../application/auth.usecase';
 
 @Component({
   selector: 'amb-header',
@@ -6,7 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  constructor() {}
+  nameUser: string | null;
+
+  constructor(private readonly authUseCase: AuthUseCase) {
+    this.nameUser = authUseCase.getFieldInToken('name');
+  }
 
   ngOnInit(): void {}
+
+  logout() {
+    this.authUseCase.logout();
+  }
 }
