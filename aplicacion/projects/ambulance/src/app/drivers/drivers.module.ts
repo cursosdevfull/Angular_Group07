@@ -14,6 +14,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DriverRepository } from './application/driver.repository';
+import { DriversService } from './infraestructure/drivers.service';
+import { DriverUseCase } from './application/driver.usecase';
 
 @NgModule({
   declarations: [ListDriversComponent, FormDriverComponent],
@@ -30,6 +33,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
+  ],
+  providers: [
+    { provide: DriverRepository, useClass: DriversService },
+    DriverUseCase,
   ],
 })
 export class DriversModule {}

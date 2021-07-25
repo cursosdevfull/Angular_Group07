@@ -1,9 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { environment } from 'projects/ambulance/src/environments/environment';
+import { Observable, Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { ConfirmComponent } from '../../shared/components/confirm/confirm.component';
 import { KeyPadButton } from '../../shared/interfaces/keybutton.interface';
 import { MetaDataColumn } from '../../shared/interfaces/medatacolum.interface';
+import { UtilsService } from '../../shared/services/utils.service';
+import { DriverUseCase } from '../application/driver.usecase';
+import { ResultPage } from '../application/result-page.interface';
+import { DriverModel } from '../domain/driver.model';
 import { FormDriverComponent } from '../form-driver/form-driver.component';
 import { DriversService } from '../infraestructure/drivers.service';
 
@@ -13,8 +19,8 @@ import { DriversService } from '../infraestructure/drivers.service';
   styleUrls: ['./list-drivers.component.css'],
 })
 export class ListDriversComponent implements OnInit {
-  dataOriginal: any[] = [
-    {
+  /*dataOriginal: any[] = [
+     {
       id: 1,
       nombre: 'Jorge Atala',
     },
@@ -170,15 +176,18 @@ export class ListDriversComponent implements OnInit {
       id: 39,
       nombre: 'Raúl Caravaglia',
     },
-  ];
+  ]; */
 
-  data: any;
+  obsFinish = new Subject<any>();
+
+  data: DriverModel[] = [];
   pageCurrent = 0;
+  totalRecords = 0;
   pageSize = environment.pageSize;
 
   metaDataColumns: MetaDataColumn[] = [
     { field: 'id', title: 'ID' },
-    { field: 'nombre', title: 'Nombre Completo' },
+    { field: 'name', title: 'Nombre Completo' },
   ];
 
   keypadButtons: KeyPadButton[] = [
@@ -193,22 +202,25 @@ export class ListDriversComponent implements OnInit {
 
   constructor(
     private readonly dialog: MatDialog,
-    private readonly driversService: DriversService
+    private readonly driverUseCase: DriverUseCase,
+    private readonly utilsService: UtilsService
   ) {
-    this.loadDataByPage();
-    // this.driversService.list();
+    this.loadDataByPage(0);
   }
 
-  loadDataByPage() {
-    this.data = this.dataOriginal.slice(
-      this.pageCurrent * this.pageSize,
-      this.pageCurrent * this.pageSize + this.pageSize
-    );
+  loadDataByPage(page: number) {
+    this.driverUseCase
+      .getPage(page)
+      .pipe(takeUntil(this.obsFinish))
+      .subscribe((data: ResultPage) => {
+        this.data = data.records as DriverModel[];
+        this.totalRecords = data.totalRecords;
+      });
   }
 
   changePage(page: number) {
     this.pageCurrent = page;
-    this.loadDataByPage();
+    this.loadDataByPage(page);
   }
 
   ngOnInit(): void {}
@@ -222,57 +234,74 @@ export class ListDriversComponent implements OnInit {
       case 'NEW':
         this.openForm();
         break;
+      case 'DOWNLOAD':
+        this.download();
+        break;
     }
   }
 
-  openForm(data: any = null) {
-    const reference: MatDialogRef<FormDriverComponent> = this.dialog.open(
-      FormDriverComponent,
-      {
+  openForm(data?: DriverModel) {
+    const reference: MatDialogRef<FormDriverComponent> =
+      this.utilsService.openModal(FormDriverComponent, {
         disableClose: true,
         panelClass: 'container-modal',
         data,
-      }
-    );
+      });
 
     reference.afterClosed().subscribe((response) => {
       if (!response) {
         return;
       }
+
       if (response.id) {
-        const pos = this.dataOriginal.findIndex(
-          (row) => row.id === response.id
-        );
-        this.dataOriginal[pos].nombre = response.nombre;
-        this.loadDataByPage();
+        const driver = { ...response };
+        delete driver.id;
+        this.driverUseCase
+          .update(response.id, driver)
+          .pipe(takeUntil(this.obsFinish))
+          .subscribe((data: DriverModel) =>
+            this.loadDataByPage(this.pageCurrent)
+          );
       } else {
-        const maxIndex =
-          [...this.dataOriginal].sort((a, b) => b.id - a.id)[0].id + 1;
-        this.dataOriginal.push({ id: maxIndex, nombre: response.nombre });
-        this.loadDataByPage();
+        this.driverUseCase
+          .insert(response)
+          .pipe(takeUntil(this.obsFinish))
+          .subscribe((data: DriverModel) =>
+            this.loadDataByPage(this.pageCurrent)
+          );
       }
     });
   }
 
-  delete(row: any) {
-    const reference: MatDialogRef<ConfirmComponent> = this.dialog.open(
-      ConfirmComponent,
-      {
-        disableClose: true,
-        width: '320px',
-      }
+  delete(row: DriverModel) {
+    const obsResponse: Observable<string> = this.utilsService.confirm(
+      '¿Está seguro de querer eliminar?'
     );
 
-    reference.componentInstance.message = '¿Está seguro?';
-
-    reference.afterClosed().subscribe((response) => {
+    obsResponse.subscribe((response) => {
       if (!response) {
         return;
       }
 
-      const index = this.dataOriginal.findIndex((el) => el.id === row.id);
+      this.driverUseCase
+        .delete(row.id)
+        .pipe(takeUntil(this.obsFinish))
+        .subscribe((data: DriverModel) => {
+          this.loadDataByPage(0);
+        });
+
+      /*       const index = this.dataOriginal.findIndex((el) => el.id === row.id);
       this.dataOriginal.splice(index, 1);
-      this.loadDataByPage();
+      this.loadDataByPage(); */
     });
+  }
+
+  download() {
+    this.utilsService.openSheet();
+  }
+
+  ngOnDestroy() {
+    this.obsFinish.next();
+    this.obsFinish.complete();
   }
 }
