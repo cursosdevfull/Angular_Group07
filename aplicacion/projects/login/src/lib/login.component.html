@@ -12,7 +12,7 @@
       placeholder="Ingrese su correo"
       #fieldEmail
       required
-      formControlName="email"
+      formControlName="correo"
     />
     <mat-icon matSuffix>email</mat-icon>
   </mat-form-field>
@@ -30,6 +30,9 @@
       <mat-icon>{{ hide ? "lock" : "lock_open" }}</mat-icon>
     </button>
   </mat-form-field>
+  <div class="recaptcha">
+    <re-captcha formControlName="recaptchaReactive"> </re-captcha>
+  </div>
   <div fxLayout fxLayoutAlign="center">
     <button
       type="button"
@@ -42,25 +45,3 @@
     </button>
   </div>
 </form>
-
-<!-- <form>
-  <div>
-    <input
-      type="text"
-      name="email"
-      placeholder="Email"
-      (input)="email = $event"
-    />
-  </div>
-  <div>
-    <input
-      type="password"
-      name="password"
-      placeholder="Password"
-      (input)="password = $event"
-    />
-  </div>
-  <div>
-    <button type="button" (click)="handler()">Login</button>
-  </div>
-</form> -->

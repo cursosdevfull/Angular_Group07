@@ -16,6 +16,7 @@ import {
 interface Auth {
   correo: string;
   password: string;
+  recaptchaReactive: string;
 }
 
 @Component({
@@ -28,6 +29,8 @@ export class LoginComponent implements OnInit {
   @ViewChild('fieldPassword') fieldPassword: ElementRef | undefined;
   @Output() onLogin: EventEmitter<Auth> = new EventEmitter<Auth>();
 
+  log: string[] = [];
+
   auth!: Auth;
 
   hide = true;
@@ -36,16 +39,18 @@ export class LoginComponent implements OnInit {
 
   constructor() {
     this.formGroupTS = new FormGroup({
-      email: new FormControl(null, [Validators.required, Validators.email]),
+      correo: new FormControl(null, [Validators.required, Validators.email]),
       password: new FormControl(null, Validators.required),
+      recaptchaReactive: new FormControl(null, Validators.required),
     });
   }
 
   getInputsFormUser(): Auth {
-    return {
+    return this.formGroupTS.value;
+    /*     return {
       correo: this.fieldEmail?.nativeElement.value,
-      password: this.fieldPassword?.nativeElement.value,
-    };
+      password: this.fieldPassword?.nativeElement.value
+    }; */
   }
 
   handler() {

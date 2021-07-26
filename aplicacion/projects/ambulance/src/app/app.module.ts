@@ -10,7 +10,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { AppRoutingModule } from './app-routing.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MenuService } from './shared/services/menu.service';
+import { RecaptchaFormsModule, RecaptchaModule } from 'ng-recaptcha';
 import { IconService } from './shared/services/icon.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Paginator } from './shared/class/paginator';
@@ -35,6 +35,7 @@ import { TokenInterceptor } from './shared/interceptors/token.interceptor';
     FlexLayoutModule,
     ConfigModule.forRoot(AMB_Config),
     SharedModule,
+    RecaptchaFormsModule,
   ],
   providers: [
     { provide: MatPaginatorIntl, useClass: Paginator },
