@@ -1,0 +1,28 @@
+.container-modal {
+  width: 600px;
+}
+
+.container-modal mat-dialog-container {
+  padding: 0;
+}
+
+.container-modal mat-dialog-content {
+  margin: 0;
+  padding: 24px;
+}
+
+.container-modal mat-toolbar {
+  color: 444;
+  border-bottom: 1px solid rgb(128, 128, 128);
+  background: #ecedec;
+  background: -webkit-linear-gradient(#fff 0%, #e0e0e0);
+  background: -moz-linear-gradient(#fff 0%, #e0e0e0);
+  background: -ms-linear-gradient(#fff 0%, #e0e0e0);
+  background: linear-gradient(#fff 0%, #e0e0e0);
+}
+
+.error {
+  font-style: italic;
+  font-size: 12px;
+  color: red;
+}

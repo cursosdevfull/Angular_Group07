@@ -25,6 +25,8 @@ import { UtilComponent } from './services/util/util.component';
 import { ConfirmComponent } from './components/confirm/confirm.component';
 import { DescargarComponent } from './components/descargar/descargar.component';
 import { MatListModule } from '@angular/material/list';
+import { PhotoComponent } from './components/photo/photo.component';
+import { UploadDirective } from './directives/upload.directive';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -40,6 +42,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     UtilComponent,
     ConfirmComponent,
     DescargarComponent,
+    PhotoComponent,
+    UploadDirective,
   ],
   imports: [
     CommonModule,
@@ -66,6 +70,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     MatDialogModule,
     ConfirmComponent,
     DescargarComponent,
+    PhotoComponent,
   ],
   providers: [
     {

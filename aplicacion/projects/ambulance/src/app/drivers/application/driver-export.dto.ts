@@ -9,6 +9,6 @@ export class DtoDriverExport
   implements DtoExport<DriverModel, IDtoDriverExport>
 {
   mapping(data: DriverModel[]): IDtoDriverExport[] {
-    return data.map((el: any) => ({ 'Nombre del piloto': el.nombre }));
+    return data.map((el: DriverModel) => ({ 'Nombre del piloto': el.name }));
   }
 }

@@ -8,9 +8,17 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { FormMedicComponent } from './form-medic/form-medic.component';
+import { MedicRepository } from './application/medic.repository';
+import { MedicUseCase } from './application/medic.usecase';
+import { MedicsService } from './infraestructure/medics.service';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
-  declarations: [ListMedicsComponent],
+  declarations: [ListMedicsComponent, FormMedicComponent],
   imports: [
     CommonModule,
     MedicsRoutingModule,
@@ -19,6 +27,14 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatTableModule,
     MatButtonModule,
     MatTooltipModule,
+    MatToolbarModule,
+    FlexLayoutModule,
+    MatFormFieldModule,
+    MatInputModule,
+  ],
+  providers: [
+    { provide: MedicRepository, useClass: MedicsService },
+    MedicUseCase,
   ],
 })
 export class MedicsModule {}
