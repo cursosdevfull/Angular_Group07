@@ -10,7 +10,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { AppRoutingModule } from './app-routing.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { RecaptchaFormsModule, RecaptchaModule } from 'ng-recaptcha';
+import { RecaptchaFormsModule } from 'ng-recaptcha';
 import { IconService } from './shared/services/icon.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Paginator } from './shared/class/paginator';

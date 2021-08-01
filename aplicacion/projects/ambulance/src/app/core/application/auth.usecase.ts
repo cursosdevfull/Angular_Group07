@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { of } from 'rxjs';
 import { Observable } from 'rxjs';
 import { Auth } from '../domain/auth.interface';
 import { Token } from '../domain/token.interface';
@@ -18,9 +19,11 @@ export class AuthUseCase {
     return this.authRepository.login(auth);
   }
 
-  logout() {
+  logout(): Observable<any> {
     this.storageRepository.clear();
     this.router.navigate(['/']); // http://localhost:4200
+
+    return of();
   }
 
   setStorage(nameProperty: string, value: string) {
@@ -41,5 +44,9 @@ export class AuthUseCase {
 
   getFieldInToken(fieldName: string): string | null {
     return this.storageRepository.getFieldInToken(fieldName);
+  }
+
+  getNewAccessToken(refreshToken: string): Observable<Token> {
+    return this.authRepository.getNewAccessToken(refreshToken);
   }
 }

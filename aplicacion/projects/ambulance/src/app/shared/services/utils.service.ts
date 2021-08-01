@@ -4,6 +4,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { ConfirmComponent } from '../components/confirm/confirm.component';
 import { DescargarComponent } from '../components/descargar/descargar.component';
+import { OptionsExport } from '../interfaces/options-export.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -41,7 +42,13 @@ export class UtilsService {
     return this.dialog.open(classComponent, options);
   }
 
-  openSheet() {
-    this.bottomSheet.open(DescargarComponent);
+  openSheet(
+    content: any = null,
+    dto: any = null,
+    title: string,
+    fileName: string
+  ) {
+    const options: OptionsExport = { content, dto, title, fileName };
+    this.bottomSheet.open(DescargarComponent, { data: options });
   }
 }

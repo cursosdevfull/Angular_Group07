@@ -7,6 +7,7 @@ import { ConfirmComponent } from '../../shared/components/confirm/confirm.compon
 import { KeyPadButton } from '../../shared/interfaces/keybutton.interface';
 import { MetaDataColumn } from '../../shared/interfaces/medatacolum.interface';
 import { UtilsService } from '../../shared/services/utils.service';
+import { DtoDriverExport } from '../application/driver-export.dto';
 import { DriverUseCase } from '../application/driver.usecase';
 import { ResultPage } from '../application/result-page.interface';
 import { DriverModel } from '../domain/driver.model';
@@ -297,7 +298,18 @@ export class ListDriversComponent implements OnInit {
   }
 
   download() {
-    this.utilsService.openSheet();
+    this.driverUseCase
+      .list()
+      .pipe(takeUntil(this.obsFinish))
+      .subscribe((response: DriverModel[]) => {
+        const dto = new DtoDriverExport();
+        this.utilsService.openSheet(
+          response,
+          dto,
+          'Listado de pilotos',
+          'pilotos'
+        );
+      });
   }
 
   ngOnDestroy() {

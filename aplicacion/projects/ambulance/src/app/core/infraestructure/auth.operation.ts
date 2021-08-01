@@ -24,4 +24,10 @@ export class AuthOperation extends AuthRepository {
         })
       );
   }
+
+  getNewAccessToken(refreshToken: string): Observable<Token> {
+    return this.http.get<Token>(
+      `${environment.pathAPI}/users/refresh/${refreshToken}`
+    );
+  }
 }
