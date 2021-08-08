@@ -6,7 +6,7 @@ phases:
   pre_build:
     commands:
       - echo "Prebuilding, installing npm dependencies"
-      - cd aplication
+      - cd aplicacion
       - npm install
   build:
     commands:
