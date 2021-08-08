@@ -1,12 +1,12 @@
 version: '0.2'
 phases:
   install:
-    runtime-version:
+    runtime-versions:
       nodejs: 12
   pre_build:
     commands:
       - echo "Prebuilding, installing npm dependencies"
-      - cd aplication
+      - cd aplicacion
       - npm install
   build:
     commands:
