@@ -1,5 +1,6 @@
 export const environment = {
   production: true,
-  pathAPI: 'https://api-qa.midominio.com',
-  pageSize: 20,
+  pathAPI: 'https://api-cursoangular.cursos-dev.com',
+  pathPhotos: 'https://api-cursoangular.cursos-dev.com/photos',
+  pageSize: 8,
 };

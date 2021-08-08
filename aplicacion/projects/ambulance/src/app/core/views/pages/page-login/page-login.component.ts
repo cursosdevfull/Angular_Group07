@@ -8,23 +8,19 @@ import {
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConfigService } from 'projects/ambulance/src/app/config/services/config.service';
-import { User } from 'projects/ambulance/src/app/users/domain/user.interface';
+import { UserModel } from 'projects/ambulance/src/app/users/domain/user.model';
 import { Subscription } from 'rxjs';
-import { AuthRepository } from '../../../application/auth.repository';
 import { AuthUseCase } from '../../../application/auth.usecase';
 import { Auth } from '../../../domain/auth.interface';
 import { Token } from '../../../domain/token.interface';
-import { AuthOperation } from '../../../infraestructure/auth.operation';
-import { StorageOperation } from '../../../infraestructure/storage.operation';
-
 @Component({
   selector: 'amb-page-login',
   templateUrl: './page-login.component.html',
   styleUrls: ['./page-login.component.css'],
 })
 export class PageLoginComponent implements OnInit {
-  @Output() onLogin: EventEmitter<Partial<User>> = new EventEmitter<
-    Partial<User>
+  @Output() onLogin: EventEmitter<Partial<UserModel>> = new EventEmitter<
+    Partial<UserModel>
   >();
 
   subscription!: Subscription;
@@ -53,7 +49,6 @@ export class PageLoginComponent implements OnInit {
 
         this.router.navigate(['/dashboard']);
       });
-    //this.router.navigate(['/dashboard']);
   }
 
   ngOnDestroy(): void {

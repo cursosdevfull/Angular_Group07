@@ -1,0 +1,33 @@
+<mat-toolbar fxLayout fxLayoutAlign="space-between center">
+  <h3>{{ title }}</h3>
+  <button mat-icon-button mat-dialog-close>
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-toolbar>
+
+<mat-dialog-content>
+  <form fxLayout="column" [formGroup]="group">
+    <mat-form-field appearance="outline">
+      <mat-label>Nombre</mat-label>
+      <input type="text" matInput required formControlName="nombre" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Correo</mat-label>
+      <input type="text" matInput required formControlName="correo" />
+    </mat-form-field>
+    <div fxLayout fxLayoutAlign="end" fxLayoutGap="10px">
+      <button
+        mat-raised-button
+        color="primary"
+        type="button"
+        [disabled]="group.invalid"
+        (click)="save()"
+      >
+        Guardar
+      </button>
+      <button mat-button mat-dialog-close color="primary" type="button">
+        Cancelar
+      </button>
+    </div>
+  </form>
+</mat-dialog-content>

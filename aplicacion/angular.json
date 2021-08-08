@@ -26,7 +26,10 @@
               "projects/ambulance/src/favicon.ico",
               "projects/ambulance/src/assets"
             ],
-            "styles": ["projects/ambulance/src/custom-theme.scss", "projects/ambulance/src/styles.css"],
+            "styles": [
+              "projects/ambulance/src/custom-theme.scss",
+              "projects/ambulance/src/styles.css"
+            ],
             "scripts": []
           },
           "configurations": {

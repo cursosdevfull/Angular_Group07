@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ConfigLayout } from './config/interfaces/config.interface';
 import { ConfigService } from './config/services/config.service';
-import { User } from './users/domain/user.interface';
+import { UserModel } from './users/domain/user.model';
 
 @Component({
   selector: 'amb-root',
@@ -18,7 +18,7 @@ export class AppComponent {
     });
   }
 
-  login(user: Partial<User>) {
+  login(user: Partial<UserModel>) {
     console.log(user);
   }
 
