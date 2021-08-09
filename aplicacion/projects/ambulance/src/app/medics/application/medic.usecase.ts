@@ -16,7 +16,7 @@ export class MedicUseCase {
     return this.medicRepository.getPage(page);
   }
 
-  update(id: number, medic: Partial<MedicModel>): Observable<MedicModel> {
+  update(id: number, medic: FormData): Observable<MedicModel> {
     return this.medicRepository.update(id, medic);
   }
 
@@ -24,7 +24,7 @@ export class MedicUseCase {
     return this.medicRepository.delete(id);
   }
 
-  insert(medic: Partial<MedicModel>): Observable<MedicModel> {
+  insert(medic: FormData): Observable<MedicModel> {
     return this.medicRepository.insert(medic);
   }
 }

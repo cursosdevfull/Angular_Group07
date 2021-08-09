@@ -104,8 +104,10 @@ export class ListUsersComponent implements OnInit {
             this.loadDataByPage(this.pageCurrent)
           );
       } else {
+        const user = { ...response };
+        delete user.id;
         this.userUseCase
-          .insert(response)
+          .insert(user)
           .pipe(takeUntil(this.obsFinish))
           .subscribe((data: UserModel) =>
             this.loadDataByPage(this.pageCurrent)

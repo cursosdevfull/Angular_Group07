@@ -12,6 +12,11 @@ import { UserModel } from '../domain/user.model';
 export class FormUserComponent implements OnInit {
   title!: string;
   group!: FormGroup;
+  roles = [
+    { id: 1, name: 'ADMIN' },
+    { id: 2, name: 'OPERATOR' },
+    { id: 3, name: 'MEDIC' },
+  ];
 
   constructor(
     private readonly reference: MatDialogRef<FormUserComponent>,
@@ -34,6 +39,15 @@ export class FormUserComponent implements OnInit {
       ]),
       roles: new FormControl(this.data?.roles.map((r: any) => r.id)),
     });
+
+    if (this.data) {
+      this.group.addControl('password', new FormControl(''));
+    } else {
+      this.group.addControl(
+        'password',
+        new FormControl('', Validators.required)
+      );
+    }
   }
 
   save() {

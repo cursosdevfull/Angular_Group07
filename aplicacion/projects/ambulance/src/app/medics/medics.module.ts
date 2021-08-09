@@ -16,6 +16,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [ListMedicsComponent, FormMedicComponent],
@@ -31,6 +32,7 @@ import { MatInputModule } from '@angular/material/input';
     FlexLayoutModule,
     MatFormFieldModule,
     MatInputModule,
+    ReactiveFormsModule,
   ],
   providers: [
     { provide: MedicRepository, useClass: MedicsService },

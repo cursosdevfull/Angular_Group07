@@ -1,46 +1,54 @@
 <mat-toolbar fxLayout fxLayoutAlign="space-between center">
-  <h3>Title</h3>
+  <h3>{{ title }}</h3>
   <button mat-icon-button mat-dialog-close>
     <mat-icon>close</mat-icon>
   </button>
 </mat-toolbar>
 <mat-dialog-content>
-  <form fxLayout="column">
+  <form fxLayout="column" [formGroup]="group">
     <div fxLayout fxLayoutGap="10px">
       <div fxLayout="column" fxFlex="1 1 33%">
-        <amb-photo></amb-photo>
+        <amb-photo
+          formControlName="foto"
+          [photoByDefault]="photoToShow"
+        ></amb-photo>
       </div>
       <div fxLayout="column" fxFlex="1 1 33%">
         <mat-form-field appearance="outline">
           <mat-label>Nombre</mat-label>
-          <input type="text" matInput required />
+          <input type="text" matInput required formControlName="nombre" />
           <mat-error>Este campo es obligatorio</mat-error>
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>Segundo Nombre</mat-label>
-          <input type="text" matInput required />
+          <input
+            type="text"
+            matInput
+            required
+            formControlName="segundo_nombre"
+          />
           <mat-error>Este campo es obligatorio</mat-error>
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>Apellido</mat-label>
-          <input type="text" matInput required />
+          <input type="text" matInput required formControlName="apellido" />
           <mat-error>Este campo es obligatorio</mat-error>
         </mat-form-field>
       </div>
       <div fxLayout="column" fxFlex="1 1 33%">
         <mat-form-field appearance="outline">
           <mat-label>CMP</mat-label>
-          <input type="text" matInput required />
+          <input type="text" matInput required formControlName="cmp" />
           <mat-error>Este campo es obligatorio</mat-error>
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>DNI</mat-label>
-          <input type="text" matInput required />
+          <input type="text" matInput required formControlName="dni" />
           <mat-error>Este campo es obligatorio</mat-error>
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>Correo</mat-label>
-          <input type="text" matInput required />
+          <input type="text" matInput required formControlName="correo" />
           <mat-error>Este campo es obligatorio</mat-error>
         </mat-form-field>
       </div>
@@ -53,7 +61,15 @@
         <button mat-button mat-dialog-close color="primary" type="button">
           Cancelar
         </button>
-        <button mat-raised-button color="primary" type="button">Guardar</button>
+        <button
+          mat-raised-button
+          color="primary"
+          type="button"
+          [disabled]="group.invalid"
+          (click)="save()"
+        >
+          Guardar
+        </button>
       </div>
     </div>
   </form>

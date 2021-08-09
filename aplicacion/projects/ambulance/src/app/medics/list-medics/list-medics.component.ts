@@ -94,21 +94,23 @@ export class ListMedicsComponent implements OnInit {
       }
 
       if (response.id) {
-        const medic = { ...response };
-        delete medic.id;
+        const medic = response.medic;
+        // delete medic.id;
         this.medicUseCase
           .update(response.id, medic)
           .pipe(takeUntil(this.obsFinish))
-          .subscribe((data: MedicModel) =>
-            this.loadDataByPage(this.pageCurrent)
-          );
+          .subscribe((data: MedicModel) => {
+            this.loadDataByPage(this.pageCurrent);
+            this.utilsService.notifier('Registro actualizado');
+          });
       } else {
         this.medicUseCase
-          .insert(response)
+          .insert(response.medic)
           .pipe(takeUntil(this.obsFinish))
-          .subscribe((data: MedicModel) =>
-            this.loadDataByPage(this.pageCurrent)
-          );
+          .subscribe((data: MedicModel) => {
+            this.loadDataByPage(this.pageCurrent);
+            this.utilsService.notifier('Registro insertado');
+          });
       }
     });
   }

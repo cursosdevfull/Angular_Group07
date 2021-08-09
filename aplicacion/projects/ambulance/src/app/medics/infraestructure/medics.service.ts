@@ -39,7 +39,7 @@ export class MedicsService extends MedicRepository {
       );
   }
 
-  update(id: number, medic: Partial<MedicModel>): Observable<MedicModel> {
+  update(id: number, medic: FormData): Observable<MedicModel> {
     const medicResponse = medic;
     return this.http
       .put<MedicModel>(`${environment.pathAPI}/medics/${id}`, medicResponse)
@@ -58,7 +58,7 @@ export class MedicsService extends MedicRepository {
     );
   }
 
-  insert(medic: Partial<MedicModel>): Observable<MedicModel> {
+  insert(medic: FormData): Observable<MedicModel> {
     const medicResponse = medic;
     return this.http
       .post<MedicModel>(`${environment.pathAPI}/medics`, medicResponse)

@@ -20,3 +20,7 @@ p {
   font-style: italic;
   text-align: center;
 }
+
+input[type="file"] {
+  display: none;
+}

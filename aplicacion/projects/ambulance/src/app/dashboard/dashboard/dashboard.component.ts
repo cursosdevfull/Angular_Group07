@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ConfigService } from '../../config/services/config.service';
 import { LayoutAbstract } from '../../shared/class/layout';
 
