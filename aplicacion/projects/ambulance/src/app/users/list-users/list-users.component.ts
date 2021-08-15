@@ -97,6 +97,9 @@ export class ListUsersComponent implements OnInit {
       if (response.id) {
         const user = { ...response };
         delete user.id;
+        if (!user.password.trim()) {
+          delete user.password;
+        }
         this.userUseCase
           .update(response.id, user)
           .pipe(takeUntil(this.obsFinish))

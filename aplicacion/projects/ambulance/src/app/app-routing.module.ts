@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PageLoginComponent } from './core/views/pages/page-login/page-login.component';
 import { AuthenticationGuard } from './shared/guards/authentication.guard';
+import { AuthorizationGuard } from './shared/guards/authorization.guard';
 
 const routes: Routes = [
   { path: '', component: PageLoginComponent },

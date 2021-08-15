@@ -49,4 +49,8 @@ export class AuthUseCase {
   getNewAccessToken(refreshToken: string): Observable<Token> {
     return this.authRepository.getNewAccessToken(refreshToken);
   }
+
+  getRolesUser(): string[] {
+    return this.authRepository.getRolesUser();
+  }
 }

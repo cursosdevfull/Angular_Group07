@@ -13,15 +13,15 @@ export class StorageOperation {
     sessionStorage.clear();
   }
 
-  getFieldInToken(fieldName: string): string | null {
+  getFieldInToken(fieldName: string): any {
     const accessToken = this.getStorage('accessToken');
-    if (!accessToken) return null;
+    if (!accessToken) return '';
 
     try {
       const payload: any = jwt_decode(accessToken);
       return payload[fieldName];
     } catch (error) {
-      return null;
+      return '';
     }
   }
 }

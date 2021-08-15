@@ -53,24 +53,19 @@
         </mat-form-field>
       </div>
     </div>
-    <div fxLayout fxLayoutAlign="space-between center" fxLayoutGap="20px">
-      <div>
-        <span class="error">Campos inválidos</span>
-      </div>
-      <div>
-        <button mat-button mat-dialog-close color="primary" type="button">
-          Cancelar
-        </button>
-        <button
-          mat-raised-button
-          color="primary"
-          type="button"
-          [disabled]="group.invalid"
-          (click)="save()"
-        >
-          Guardar
-        </button>
-      </div>
+    <div fxLayout fxLayoutAlign="end center" fxLayoutGap="20px">
+      <button mat-button mat-dialog-close color="primary" type="button">
+        Cancelar
+      </button>
+      <button
+        mat-raised-button
+        color="primary"
+        type="button"
+        [disabled]="group.invalid"
+        (click)="save()"
+      >
+        Guardar
+      </button>
     </div>
   </form>
 </mat-dialog-content>

@@ -11,6 +11,7 @@ export class AuthenticationGuard implements CanLoad {
 
   canLoad(): boolean {
     const status = this.authUseCase.getStatusUser();
+    this.authUseCase.getRolesUser();
 
     if (!status) {
       this.router.navigate(['/']);

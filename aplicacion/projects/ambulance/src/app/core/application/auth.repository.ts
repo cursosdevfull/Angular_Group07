@@ -5,4 +5,5 @@ import { Token } from '../domain/token.interface';
 export abstract class AuthRepository {
   abstract login(auth: Auth): Observable<Token>;
   abstract getNewAccessToken(refreshToken: string): Observable<Token>;
+  abstract getRolesUser(): string[];
 }

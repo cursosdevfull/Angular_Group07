@@ -2,7 +2,10 @@
 <amb-container>
   <perfect-scrollbar class="heightMaxPerfectScrollbar">
     <amb-table [data]="data" [metaDataColumns]="metaDataColumns">
-      <ng-container matColumnDef="actions">
+      <ng-container
+        matColumnDef="actions"
+        *roles-allowed="['ADMIN', 'OPERATOR']"
+      >
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let row" class="align-right">
           <button

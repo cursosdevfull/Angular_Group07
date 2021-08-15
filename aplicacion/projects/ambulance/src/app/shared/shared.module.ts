@@ -31,6 +31,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { PhotoComponent } from './components/photo/photo.component';
 import { UploadDirective } from './directives/upload.directive';
 import { WebcamModule } from 'ngx-webcam';
+import { RolesAllowedDirective } from './directives/roles-allowed.directive';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -48,6 +49,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     DescargarComponent,
     PhotoComponent,
     UploadDirective,
+    RolesAllowedDirective,
   ],
   imports: [
     WebcamModule,
@@ -80,6 +82,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     PhotoComponent,
     MatSnackBarModule,
     MatSelectModule,
+    RolesAllowedDirective,
   ],
   providers: [
     {
