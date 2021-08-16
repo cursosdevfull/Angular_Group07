@@ -19,7 +19,7 @@ export class TokenInterceptor implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    if (req.url.includes('/users/login')) {
+    if (req.url.includes('/users/login') || req.url.includes('/api')) {
       return next.handle(req);
     }
     const authUseCase = this.injector.get(AuthUseCase);
